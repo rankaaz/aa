@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【애드고】구글애드워즈 광고대행 | 검색·쇼핑·디스플레이 전문</title>
+    <meta name="description" content="구글애즈 전문 대행사 애드고. 24시간 상담, 투명한 비용, 실시간 성과 리포트 제공">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #007BFF;
+            --primary-dark: #0056b3;
+            --secondary: #6C757D;
+            --accent: #FFD700;
+            --light: #F8F9FA;
+            --dark: #333;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Roboto',sans-serif; line-height:1.7; color:var(--dark); background:var(--light); }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color:white;
+            position:fixed;
+            top:0; left:0; right:0;
+            z-index:1000;
+            box-shadow:0 4px 15px rgba(0,0,0,0.1);
+        }
+        nav {
+            max-width:1400px;
+            margin:0 auto;
+            padding:0 2rem;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            height:80px;
+        }
+        nav h1 { font-size:1.8rem; font-weight:700; }
+        nav h1 i { margin-right:10px; }
+        .desktop-menu { display:flex; gap:2.5rem; }
+        .desktop-menu a { color:white; text-decoration:none; font-weight:500; font-size:1.05rem; transition:color .3s; }
+        .desktop-menu a:hover { color:var(--accent); }
+        .mobile-menu-btn { display:none; font-size:2rem; cursor:pointer; }
+
+        .mobile-menu {
+            position:fixed;
+            top:80px; left:0; right:0;
+            background:var(--primary);
+            padding:1.5rem 0;
+            transform:translateY(-120%);
+            transition:transform .4s ease;
+            z-index:999;
+        }
+        .mobile-menu.active { transform:translateY(0); }
+        .mobile-menu a { display:block; padding:1rem 2rem; color:white; text-decoration:none; font-size:1.2rem; }
+
+        main { margin-top:80px; max-width:1400px; margin-left:auto; margin-right:auto; padding:2rem; }
+
+        .hero {
+            background:white;
+            padding:5rem 2rem;
+            text-align:center;
+            border-radius:16px;
+            box-shadow:0 8px 25px rgba(0,0,0,0.08);
+            margin-bottom:4rem;
+        }
+        .hero h1 { font-size:2.8rem; color:var(--primary); margin-bottom:1rem; }
+        .hero h2 { font-size:2rem; color:var(--secondary); margin-bottom:1.5rem; }
+        .hero p { font-size:1.2rem; color:#555; }
+
+        /* 4개 카드 완벽 비율 */
+        .services {
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap:2rem;
+            margin-bottom:5rem;
+        }
+        .card {
+            background:white;
+            padding:3rem 2rem;
+            border-radius:16px;
+            text-align:center;
+            box-shadow:0 8px 25px rgba(0,0,0,0.08);
+            transition:all .4s;
+        }
+        .card:hover { transform:translateY(-12px); box-shadow:0 20px 40px rgba(0,0,0,0.15); }
+        .card i { font-size:4rem; color:var(--primary); margin-bottom:1.5rem; }
+        .card h3 { font-size:1.6rem; color:var(--primary); margin-bottom:1rem; }
+
+        .reasons {
+            background:white;
+            padding:4rem 3rem;
+            border-radius:16px;
+            box-shadow:0 8px 25px rgba(0,0,0,0.08);
+            margin-bottom:5rem;
+        }
+        .reasons h3 { text-align:center; font-size:2.3rem; color:var(--primary); margin-bottom:3rem; }
+        .reasons ul { max-width:900px; margin:0 auto; }
+        .reasons li {
+            display:flex;
+            align-items:flex-start;
+            padding:1.3rem 0;
+            font-size:1.15rem;
+            border-bottom:1px solid #eee;
+        }
+        .reasons li:last-child { border:none; }
+        .reasons li i { color:#28a745; font-size:1.6rem; margin-right:1.2rem; margin-top:5px; flex-shrink:0; }
+
+        .cta {
+            background:linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color:white;
+            padding:5rem 2rem;
+            text-align:center;
+            border-radius:16px;
+            box-shadow:0 15px 35px rgba(0,123,255,0.4);
+        }
+        .cta h3 { font-size:2.4rem; margin-bottom:1rem; }
+        .cta p { font-size:1.3rem; margin-bottom:2.5rem; opacity:0.95; }
+        .btn-group { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; }
+        .cta-btn {
+            background:var(--accent);
+            color:var(--primary-dark);
+            border:none;
+            padding:1.1rem 2.8rem;
+            font-size:1.2rem;
+            font-weight:700;
+            border-radius:50px;
+            cursor:pointer;
+            transition:all .3s;
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+        }
+        .cta-btn:hover { background:#FFC107; transform:scale(1.07); }
+        .cta-btn.kakao i { color:#3C1E1E; }
+        .cta-btn.telegram i { color:#0088cc; }
+
+        footer { text-align:center; padding:3rem; background:var(--secondary); color:white; font-size:0.95rem; }
+
+        /* 반응형 */
+        @media (max-width: 992px) {
+            .services { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { padding:0 1.5rem; height:70px; }
+            nav h1 { font-size:1.6rem; }
+            .desktop-menu { display:none; }
+            .mobile-menu-btn { display:block; }
+            .hero h1 { font-size:2.2rem; }
+            .hero h2 { font-size:1.7rem; }
+            .reasons h3 { font-size:2rem; }
+            .cta h3 { font-size:2rem; }
+            .btn-group { flex-direction:column; align-items:center; }
+            .cta-btn { width:280px; justify-content:center; }
+        }
+        @media (max-width: 576px) {
+            .services { grid-template-columns: 1fr; }
+            .hero { padding:3rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <h1><i class="fas fa-bullhorn"></i> 애드고</h1>
+        <div class="desktop-menu">
+            <a href="#services">서비스</a>
+            <a href="#reasons">선택 이유</a>
+            <a href="#cta">상담 신청</a>
+        </div>
+        <div class="mobile-menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#services">서비스</a>
+    <a href="#reasons">선택 이유</a>
+    <a href="#cta">상담 신청</a>
+</div>
+
+<main>
+    <section class="hero">
+        <h1>【애드고】구글애드워즈 광고대행 전문</h1>
+        <h2>검색광고 · 쇼핑광고 · 디스플레이 · 리마케팅까지<br>전문가가 직접 관리합니다</h2>
+        <p>24시간 실시간 상담 │ 100% 투명한 비용 │ 매일 성과 리포트 제공</p>
+    </section>
+
+    <section class="services" id="services">
+        <div class="card">
+            <i class="fas fa-search"></i>
+            <h3>검색광고 대행</h3>
+            <p>정확한 키워드 선정과 실시간 입찰 최적화</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>쇼핑광고 대행</h3>
+            <p>상품 피드 최적화 및 고효율 쇼핑 캠페인</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-desktop"></i>
+            <h3>디스플레이 광고</h3>
+            <p>매력적인 배너 제작부터 타겟팅까지 완벽 관리</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-redo"></i>
+            <h3>리마케팅 · 리타게팅</h3>
+            <p>이탈 고객을 다시 끌어오는 강력한 재노출 광고</p>
+        </div>
+    </section>
+
+    <section class="reasons" id="reasons">
+        <h3>애드고가 특별한 이유</h3>
+        <ul>
+            <li><i class="fas fa-check-circle"></i> 구글 공식 파트너급 전문가 직접 운영 (경력 7년 이상)</li>
+            <li><i class="fas fa-check-circle"></i> 대행수수료, 광고비 모두 투명 공개</li>
+            <li><i class="fas fa-check-circle"></i> 24시간 카카오톡·텔레그램·전화 상담</li>
+        </ul>
+    </section>
+
+    <section class="cta" id="cta">
+        <h3>지금 바로 무료 계정 진단 받으세요</h3>
+        <p>현재 광고 계정 상태를 전문가가 무료로 분석해 드립니다</p>
+        <div class="btn-group">
+            <button class="cta-btn kakao" onclick="location.href='https://open.kakao.com/o/sKQgQK1h'">
+                <i class="fas fa-comment"></i> 카카오톡 상담
+            </button>
+            <button class="cta-btn telegram" onclick="location.href='https://t.me/adgo1'">
+                <i class="fab fa-telegram-plane"></i> 텔레그램 상담
+            </button>
+        </div>
+    </section>
+</main>
+
+<footer>
+    © 2025 애드고 All Rights Reserved.
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('mobileMenu').classList.toggle('active');
+    }
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('nav') && !e.target.closest('.mobile-menu')) {
+            document.getElementById('mobileMenu').classList.remove('active');
+        }
+    });
+</script>
+</body>
+</html>
